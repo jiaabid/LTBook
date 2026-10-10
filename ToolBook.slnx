@@ -1,0 +1,28 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ToolBook.Host/ToolBook.Host.csproj" />
+    <Project Path="src/ToolBook.SharedKernel/ToolBook.SharedKernel.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Bookings/">
+    <Project Path="src/Modules/Bookings/ToolBook.Bookings.Contracts/ToolBook.Bookings.Contracts.csproj" />
+    <Project Path="src/Modules/Bookings/ToolBook.Bookings/ToolBook.Bookings.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Knowledge/">
+    <Project Path="src/Modules/Knowledge/ToolBook.Knowledge.Contracts/ToolBook.Knowledge.Contracts.csproj" />
+    <Project Path="src/Modules/Knowledge/ToolBook.Knowledge/ToolBook.Knowledge.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Tools/">
+    <Project Path="src/Modules/Tools/ToolBook.Tools.Contracts/ToolBook.Tools.Contracts.csproj" />
+    <Project Path="src/Modules/Tools/ToolBook.Tools/ToolBook.Tools.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Users/">
+    <Project Path="src/Modules/Users/ToolBook.Users.Contracts/ToolBook.Users.Contracts.csproj" />
+    <Project Path="src/Modules/Users/ToolBook.Users/ToolBook.Users.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ToolBook.ArchitectureTests/ToolBook.ArchitectureTests.csproj" />
+    <Project Path="tests/ToolBook.IntegrationTests/ToolBook.IntegrationTests.csproj" />
+    <Project Path="tests/ToolBook.UnitTests/ToolBook.UnitTests.csproj" />
+  </Folder>
+</Solution>

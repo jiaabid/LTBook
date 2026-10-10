@@ -1,0 +1,56 @@
+# Equivalent of .github/workflows/ci.yml for Azure DevOps.
+# GitHub Actions is the active CI for this repository; this definition mirrors the same stages.
+
+trigger:
+  branches:
+    include: [main]
+
+pr:
+  branches:
+    include: ['*']
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  buildConfiguration: Release
+
+stages:
+  - stage: Backend
+    displayName: Backend (restore → build → test)
+    jobs:
+      - job: BuildAndTest
+        steps:
+          - task: UseDotNet@2
+            displayName: Install .NET SDK from global.json
+            inputs:
+              useGlobalJson: true
+
+          - script: dotnet restore ToolBook.slnx
+            displayName: Restore
+
+          - script: dotnet build ToolBook.slnx --no-restore --configuration $(buildConfiguration)
+            displayName: Build
+
+          # Integration tests use Testcontainers; Microsoft-hosted ubuntu agents have Docker.
+          - script: dotnet test ToolBook.slnx --no-build --configuration $(buildConfiguration) --logger trx --results-directory $(Agent.TempDirectory)/TestResults
+            displayName: Test
+
+          - task: PublishTestResults@2
+            condition: always()
+            inputs:
+              testResultsFormat: VSTest
+              testResultsFiles: '$(Agent.TempDirectory)/TestResults/*.trx'
+
+  - stage: Frontend
+    displayName: Frontend (install → lint → build)
+    dependsOn: []
+    jobs:
+      - job: Web
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '22.x'
+          - script: npm ci && npm run lint && npm run build
+            workingDirectory: web
+            displayName: Install, lint, build

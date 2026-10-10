@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <UserSecretsId>toolbook-host-6f1c2d4e</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToolBook.SharedKernel\ToolBook.SharedKernel.csproj" />
+    <ProjectReference Include="..\Modules\Users\ToolBook.Users\ToolBook.Users.csproj" />
+    <ProjectReference Include="..\Modules\Tools\ToolBook.Tools\ToolBook.Tools.csproj" />
+    <ProjectReference Include="..\Modules\Bookings\ToolBook.Bookings\ToolBook.Bookings.csproj" />
+    <ProjectReference Include="..\Modules\Knowledge\ToolBook.Knowledge\ToolBook.Knowledge.csproj" />
+  </ItemGroup>
+
+</Project>

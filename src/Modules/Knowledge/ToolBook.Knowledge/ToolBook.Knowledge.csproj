@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+    <PackageReference Include="Microsoft.Extensions.AI" />
+    <PackageReference Include="Microsoft.Extensions.AI.OpenAI" />
+    <PackageReference Include="PdfPig" />
+    <PackageReference Include="System.Numerics.Tensors" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ToolBook.SharedKernel\ToolBook.SharedKernel.csproj" />
+    <ProjectReference Include="..\ToolBook.Knowledge.Contracts\ToolBook.Knowledge.Contracts.csproj" />
+    <ProjectReference Include="..\..\Tools\ToolBook.Tools.Contracts\ToolBook.Tools.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Demo knowledge base (fictional manuals) lives in docs/knowledge-base and is embedded for the dev seeder. -->
+    <EmbeddedResource Include="..\..\..\..\docs\knowledge-base\*.md" Exclude="..\..\..\..\docs\knowledge-base\README.md"
+                      LogicalName="KnowledgeBase.%(Filename)%(Extension)" />
+  </ItemGroup>
+
+</Project>
